@@ -43,6 +43,13 @@ export class GetProfileService {
     // Gửi yêu cầu GET đến trang Crossref
     return this.http.get<any>(url, { headers });
   }
+  getProfileIEEE(linkProfileIEEE: string): Observable<any> {
+    const url = `https://api-json-server-84l9.onrender.com/${linkProfileIEEE}`;
+    const headers = {
+      Accept: 'application/json',
+    };
+    return this.http.get<any>(url, { headers });
+  }
   // getProfileLinkedIn1(linkProfileLinkedIn: string){
   //     let linkAPIGetProfileLinkedin = `https://nubela.co/proxycurl/api/v2/linkedin?url=${linkProfileLinkedIn}&fallback_to_cache=on-error&skills=include`
   //     console.log(`Link linkedin profile service: ` + linkAPIGetProfileLinkedin);

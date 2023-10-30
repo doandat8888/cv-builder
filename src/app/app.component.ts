@@ -140,7 +140,7 @@ export class AppComponent {
         )
       }
 
-      // Crossref Link test: 
+      // Crossref Link test:
       // https://doi.org/10.11646/zootaxa.5164.1.1
       // https://doi.org/10.54957/jolas.v2i2.182
       // https://doi.org/10.33545/26175754.2021.v4.i2a.110
@@ -170,7 +170,7 @@ export class AppComponent {
               this.works = profileData.works;
               this.title = profileData.title;
               this.abstract = profileData.abstract;
-              
+
               // Thay đổi giao diện cho phù hợp
               const myElement = document.getElementById("naruto");
               if (myElement) {
@@ -182,7 +182,7 @@ export class AppComponent {
                   text-align: left;
                   margin: 8px 0;
               }
-              
+
               .content{
                 color: black;
                 text-align: left;
@@ -203,7 +203,7 @@ export class AppComponent {
               `;
                   // Lấy nội dung HTML từ phần tử
                   const content = myElement.innerHTML;
-                  
+
                   console.log(content);
               } else {
                   console.log("Không tìm thấy phần tử với ID 'myElement'");
@@ -215,6 +215,58 @@ export class AppComponent {
             alert('Error when getting data');
           }
         )
+      }  else if (this.pageGetProfile === 'ieee') {
+        // Link Test
+        // https://ieeexplore.ieee.org/author/37265576200
+        // https://ieeexplore.ieee.org/author/37280142900
+        // https://ieeexplore.ieee.org/author/37271997300
+        this.isLoading = true
+        const authorId = this.linkProfile.split("/").pop();
+        this.getPfSv.getProfileIEEE(await authorId).subscribe(
+          async (res) => {
+            if (res) {
+              this.isLoading = false
+              alert('Build CV successfully');
+              this.profileUser = res
+              this.fullName = this.profileUser[0].name
+              this.profilePicUrl = this.profileUser[0].img;
+              this.works = ['Author'];
+              let affiSplit = this.profileUser[0].affiliation.split('\n');
+              this.skills = affiSplit;
+              this.experiences = this.profileUser[0].bio.split('\n');
+              const myElement = document.getElementById("naruto");
+              if (myElement) {
+                myElement.innerHTML = `
+              <style>
+              .right-item{
+                  color: black;
+                  font-size: 40px;
+                  text-align: left;
+                  margin: 8px 0;
+              }
+
+              .content{
+                color: black;
+                text-align: left;
+                margin: 3px 0;
+              }
+              </style>
+
+              <div class="right-item">Work</div>
+                <p class="content">${this.works}</p>
+              <hr>
+              <div class="right-item">Affiliation</div>
+                <p class="content">${this.skills}</p>
+              <hr>
+              <div class="right-item">Biography</div>
+                <p class="content">${this.experiences}</p>
+              <hr>
+              `;
+              } else {
+                console.log("Không tìm thấy phần tử với ID 'myElement'");
+              }
+            }
+          })
       }
 
       // else {

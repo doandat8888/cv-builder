@@ -1,0 +1,6 @@
+<div>
+    <form class="link-cv" (ngSubmit)="generatePdf()" #pdfForm="ngForm">
+      <input class="link-cv-input" type="text" name="profileUrl" [(ngModel)]="profileUrl" placeholder="Input your Research Gate profile URL" required>
+      <button class="build-cv-btn" type="submit">Generate PDF</button>
+    </form>
+</div>

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  linkedin_token: "cePTigE-u5h9Kiaxi5FZlA",
+  linkedin_token: "kI2RpxU5dasRPH3KAVSHEg",
 }

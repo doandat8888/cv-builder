@@ -25,18 +25,18 @@ export class GgSholarComponent implements OnInit {
   }
   constructor(
     private ggSholarService: GgSholarService) { }
-  ngOnInit(): void {
-    this.ggSholarService.buttonClick$.subscribe((data: any) => {
-      if (data) {
-        this.profileGgScholar = {
-          education: data.author.affiliations.split(" and "),
-          work: 'Author',
-          contact: data.author.email.split(" at ")[1],
-          achivement: data.author.interests.map((e: any) => e.title).join(", "),
-          contributions: data.articles.map((e: any) => `Article ${e.title} co-work with ${e.authors} in ${e.year}`)
+    ngOnInit(): void {
+      this.ggSholarService.buttonClick$.subscribe((data: any) => {
+        if (data) {
+          this.profileGgScholar = {
+            education: data.author.affiliations.split(" and "),
+            work: 'Author',
+            contact: data.author.email.split(" at ")[1],
+            achivement: data.author.interests.map((e: any) => e.title).join(", "),
+            contributions: data.articles.map((e: any) => `Article ${e.title} co-work with ${e.authors} in ${e.year}`)
+          }
         }
-      }
-    });
-  }
+      });
+    }
 
 }

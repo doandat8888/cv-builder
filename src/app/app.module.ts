@@ -6,16 +6,21 @@ import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { GgSholarComponent } from './ggscholar/gg-sholar/gg-sholar.component';
+import { ResearchGateComponent } from './research-gate/research-gate.component';
 
 @NgModule({ //@Decurator
   declarations: [
     AppComponent,
     GgSholarComponent,
+    ResearchGateComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
+  ],
+  exports:[
+    ResearchGateComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },

@@ -267,6 +267,8 @@ export class AppComponent {
               }
             }
           })
+      } else if (this.pageGetProfile == 'rg'){
+        
       }
 
       // else {
